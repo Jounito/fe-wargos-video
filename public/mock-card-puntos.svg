@@ -1,0 +1,14 @@
+<svg width="220" height="178" viewBox="0 0 220 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="218" height="176" rx="14" fill="white" fill-opacity="0.94"/>
+  <rect x="1" y="1" width="218" height="176" rx="14" stroke="#D8E7FF" stroke-width="2"/>
+  <text x="20" y="40" fill="#0A1533" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Puntos</text>
+  <text x="20" y="86" fill="#050505" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700">12,450</text>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700">
+    <path d="M22 111h18l-9-10z" fill="#23B26D"/>
+    <text x="45" y="113" fill="#23B26D">13.5%</text>
+    <path d="M112 111h18l-9-10z" fill="#23B26D"/>
+    <text x="135" y="113" fill="#23B26D">12.5%</text>
+  </g>
+  <rect x="20" y="132" width="76" height="8" rx="4" fill="#DCEAFF"/>
+  <rect x="108" y="132" width="78" height="8" rx="4" fill="#DCEAFF"/>
+</svg>
