@@ -30,14 +30,14 @@ const clamp = {
 const easeOut = Easing.bezier(0.22, 1, 0.36, 1);
 
 const ecosystemCards = [
-  { src: "ecosystem-promociones.png", x: 170, y: 170, width: 185, rotate: -6, rotateY: 14, delay: 18 },
-  { src: "ecosystem-cupones.png", x: 384, y: 132, width: 198, rotate: -2, rotateY: 7, delay: 24 },
-  { src: "ecosystem-puntos.png", x: 610, y: 118, width: 205, rotate: 2, rotateY: -5, delay: 30 },
-  { src: "ecosystem-rankings.png", x: 838, y: 154, width: 196, rotate: 6, rotateY: -13, delay: 36 },
-  { src: "ecosystem-player-tracking.png", x: 222, y: 356, width: 205, rotate: 5, rotateY: 11, delay: 42 },
-  { src: "ecosystem-cashless.png", x: 470, y: 332, width: 218, rotate: 1, rotateY: 3, delay: 48 },
-  { src: "ecosystem-tickets.png", x: 715, y: 344, width: 205, rotate: -3, rotateY: -7, delay: 54 },
-  { src: "ecosystem-crm.png", x: 952, y: 348, width: 205, rotate: -7, rotateY: -14, delay: 60 },
+  { src: "scene03-card-promociones.png", x: 472, y: 142, width: 205, delay: 18 },
+  { src: "scene03-card-cupones.png", x: 636, y: 128, width: 208, delay: 24 },
+  { src: "scene03-card-puntos.png", x: 805, y: 112, width: 216, delay: 30 },
+  { src: "scene03-card-rankings.png", x: 980, y: 116, width: 210, delay: 36 },
+  { src: "scene03-card-player-tracking.png", x: 304, y: 331, width: 226, delay: 42 },
+  { src: "scene03-card-cashless.png", x: 486, y: 313, width: 230, delay: 48 },
+  { src: "scene03-card-tickets.png", x: 688, y: 319, width: 232, delay: 54 },
+  { src: "scene03-card-bingo.png", x: 936, y: 313, width: 232, delay: 60 },
 ];
 
 const operationsSlices = [
@@ -718,42 +718,34 @@ const ProductPresentation = () => {
       />
       <ProductConnectionLines />
       <FloatingImageMockup
-        src="mockup-vip-card.png"
-        x={700}
-        y={6}
-        width={342}
+        src="scene02-card-vip.png"
+        x={650}
+        y={24}
+        width={407}
         delay={18}
-        rotate={-0.6}
-        rotateY={-4}
         lift={2}
       />
       <FloatingImageMockup
-        src="mockup-promociones-card.png"
-        x={650}
-        y={216}
-        width={402}
+        src="scene02-card-promo.png"
+        x={615}
+        y={244}
+        width={428}
         delay={26}
-        rotate={0.8}
-        rotateY={4}
       />
       <FloatingImageMockup
-        src="mockup-puntos-card.png"
-        x={1010}
-        y={110}
-        width={235}
+        src="scene02-card-points.png"
+        x={957}
+        y={144}
+        width={351}
         delay={30}
-        rotate={0.9}
-        rotateY={-5}
         lift={6}
       />
       <FloatingImageMockup
-        src="mockup-ranking-card.png"
-        x={930}
-        y={350}
-        width={285}
+        src="scene02-card-ranking.png"
+        x={830}
+        y={356}
+        width={500}
         delay={34}
-        rotate={1.2}
-        rotateY={-5}
       />
     </SoftBackground>
   );
@@ -774,7 +766,6 @@ const EcosystemGalleryCard = ({
     config: { damping: 18, stiffness: 118, mass: 0.86 },
   });
   const drift = Math.sin((frame + index * 13) / 30) * 7 * enter;
-  const breathe = Math.sin((frame + index * 19) / 42) * 1.2 * enter;
   const parallax = interpolate(frame, [0, 150], [-10, 10], {
     ...clamp,
     easing: easeOut,
@@ -792,7 +783,7 @@ const EcosystemGalleryCard = ({
           width: card.width,
           height: cardHeight * 0.48,
           opacity: enter * 0.34,
-          transform: `perspective(900px) rotateY(${card.rotateY * 0.55}deg) rotate(${card.rotate * 0.55}deg) scaleY(-0.42) translateY(${10 - drift * 0.4}px)`,
+          transform: `scaleY(-0.42) translateY(${10 - drift * 0.4}px)`,
           transformOrigin: "top center",
           filter: "blur(1.2px) saturate(0.95)",
           WebkitMaskImage:
@@ -819,7 +810,7 @@ const EcosystemGalleryCard = ({
           top: card.y,
           width: card.width,
           opacity: enter,
-          transform: `perspective(1100px) translate3d(${(1 - enter) * (index < 4 ? -28 : 28)}px, ${(1 - enter) * 80 + drift}px, 0) rotateY(${card.rotateY * enter + breathe}deg) rotate(${card.rotate * enter}deg) scale(${0.82 + enter * 0.18})`,
+          transform: `translate3d(${(1 - enter) * (index < 4 ? -28 : 28)}px, ${(1 - enter) * 80 + drift}px, 0) scale(${0.82 + enter * 0.18})`,
           transformStyle: "preserve-3d",
           transformOrigin: "center bottom",
           filter:
@@ -889,11 +880,12 @@ const EcosystemGallery = () => {
 const EcosystemMosaic = () => (
   <SoftBackground>
     <SceneText
-      center
-      y={62}
+      x={132}
+      y={214}
+      width={390}
       title="Todo lo que necesitas,"
       blue="en un solo lugar."
-      size={34}
+      size={42}
     />
     <EcosystemGallery />
   </SoftBackground>
