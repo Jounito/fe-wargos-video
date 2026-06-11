@@ -2,6 +2,10 @@ node_modules
 dist
 .DS_Store
 .env
+build
+outputs
+remotion-studio.log
+remotion-studio.err.log
 
 # Ignore the output video from Git but not videos you import into src/.
 out
