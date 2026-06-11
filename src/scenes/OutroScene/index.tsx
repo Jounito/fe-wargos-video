@@ -45,7 +45,10 @@ export const OutroScene = ({ variant }: VariantSceneProps) => {
     ...clamp,
     easing: Easing.bezier(0.22, 1, 0.36, 1),
   });
-  const isotypeOpacity = interpolate(frame, [76, 102, 120], [1, 1, 0], clamp);
+  const isotypeOpacity = interpolate(frame, [76, 120], [1, 0], {
+    ...clamp,
+    easing: Easing.bezier(0.22, 1, 0.36, 1),
+  });
   const glowScale = interpolate(frame, [0, 120], [1, 1.45], clamp);
   const glowOpacity = interpolate(frame, [0, 20, 100, 120], [0.28, 0.18, 0.12, 0], clamp);
 
