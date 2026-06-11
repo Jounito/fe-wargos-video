@@ -55,8 +55,8 @@ export const ProductPresentation = () => (
       width={480}
       title="CRM para"
       blue="casinos y tragamonedas"
-      subtitle="Una plataforma completa para gestionar toda tu operacion."
-      size={60}
+      subtitle="Una plataforma completa para gestionar toda tu operación."
+      size={50}
     />
     <ProductConnectionLines />
     <FloatingImageMockup

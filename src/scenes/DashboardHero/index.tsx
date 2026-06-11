@@ -16,12 +16,14 @@ const DashboardMock = () => {
     <>
       <SceneText
         center
-        y={68}
-        title="Control en "
+        y={65}
+        title="Información en"
+        width={340}
         blue="tiempo real"
         blueInline
-        subtitle="Alertas, actividad y rendimiento en un solo dashboard."
-        size={38}
+        afterBlue="para decisiones más inteligentes."
+        subtitle="Visualiza actividad, alertas y rendimiento al instante."
+        size={32}
       />
       <div
         style={{

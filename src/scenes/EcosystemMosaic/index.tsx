@@ -128,11 +128,12 @@ const EcosystemGallery = () => {
 export const EcosystemMosaic = () => (
   <SoftBackground>
     <SceneText
-      x={80}
-      y={180}
-      width={390}
-      title="Todo lo que necesitas,"
-      blue="en un solo lugar."
+      x={60}
+      y={80}
+      width={340}
+      title="Conecta, controla y optimiza desde"
+      blue="un solo sistema"
+      subtitle="Gestiona toda tu operación con una plataforma integrada y fácil de usar."
       size={42}
     />
     <EcosystemGallery />

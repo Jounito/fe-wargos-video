@@ -62,7 +62,7 @@ export const AIHelperScene = () => {
       >
         <div
           style={{
-            fontSize: 72,
+            fontSize: 58,
             lineHeight: 0.94,
             fontWeight: 900,
             color: brand.ink,
@@ -88,7 +88,7 @@ export const AIHelperScene = () => {
         <div
           style={{
             marginTop: 34,
-            fontSize: 26,
+            fontSize: 24,
             lineHeight: 1.22,
             fontWeight: 500,
             color: "#163C86",

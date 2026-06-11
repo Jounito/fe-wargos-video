@@ -60,6 +60,7 @@ type SceneTextProps = {
   title: string;
   blue?: string;
   blueInline?: boolean;
+  afterBlue?: string;
   subtitle?: string;
   x?: number;
   y?: number;
@@ -73,6 +74,7 @@ export const SceneText = ({
   title,
   blue,
   blueInline = false,
+  afterBlue,
   subtitle,
   x,
   y,
@@ -128,11 +130,13 @@ export const SceneText = ({
             <>
               {" "}
               <span style={{ color: brand.primary }}>{blue}</span>
+              {afterBlue ? ` ${afterBlue}` : null}
             </>
           ) : (
             <>
               <br />
               <span style={{ color: brand.primary }}>{blue}</span>
+              {afterBlue ? ` ${afterBlue}` : null}
             </>
           )
         ) : null}
