@@ -9,40 +9,41 @@ import {
   ProductPresentation,
   SceneZero,
 } from "./scenes";
+import type { VariantSceneProps } from "./video-variants";
 
 void OperationsControl;
 void ProductFamilies;
 
-export const MyComposition = () => {
+export const MyComposition = ({ variant }: VariantSceneProps) => {
   return (
     <AbsoluteFill>
       <Sequence durationInFrames={90}>
-        <SceneZero />
+        <SceneZero variant={variant} />
       </Sequence>
       <Sequence from={90} durationInFrames={90}>
-        <ProductPresentation />
+        <ProductPresentation variant={variant} />
       </Sequence>
       <Sequence from={180} durationInFrames={120}>
-        <EcosystemMosaic />
+        <EcosystemMosaic variant={variant} />
       </Sequence>
       <Sequence from={300} durationInFrames={90}>
-        <DashboardHero />
+        <DashboardHero variant={variant} />
       </Sequence>
       {/*
       <Sequence from={390} durationInFrames={120}>
-        <OperationsControl />
+        <OperationsControl variant={variant} />
       </Sequence>
       */}
       {/*
       <Sequence from={390} durationInFrames={120}>
-        <ProductFamilies />
+        <ProductFamilies variant={variant} />
       </Sequence>
       */}
       <Sequence from={390} durationInFrames={120}>
-        <AIHelperScene />
+        <AIHelperScene variant={variant} />
       </Sequence>
       <Sequence from={510} durationInFrames={90}>
-        <OutroScene />
+        <OutroScene variant={variant} />
       </Sequence>
     </AbsoluteFill>
   );

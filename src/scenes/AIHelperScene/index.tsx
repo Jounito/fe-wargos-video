@@ -1,13 +1,20 @@
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { aiOperationCards } from "../../video-data";
-import { SoftBackground } from "../../video-primitives";
+import { SceneViewport, SoftBackground } from "../../video-primitives";
 import { brand, clamp } from "../../video-theme";
+import type { VariantSceneProps } from "../../video-variants";
 
 const AIHelperCard = ({
   card,
   shadow = true,
 }: {
-  card: (typeof aiOperationCards)[number];
+  card: {
+    src: string;
+    x: number;
+    y: number;
+    width: number;
+    delay: number;
+  };
   shadow?: boolean;
 }) => {
   const frame = useCurrentFrame();
@@ -46,113 +53,122 @@ const AIHelperCard = ({
   );
 };
 
-export const AIHelperScene = () => {
+export const AIHelperScene = ({ variant }: VariantSceneProps) => {
   const frame = useCurrentFrame();
   const orbitOpacity = interpolate(frame, [10, 34], [0, 1], clamp);
+  const isWide = variant === "wide";
 
   return (
     <SoftBackground>
-      <div
-        style={{
-          position: "absolute",
-          left: 88,
-          top: 150,
-          width: 470,
-        }}
-      >
+      <SceneViewport variant={variant}>
         <div
-          style={{
-            fontSize: 58,
-            lineHeight: 0.94,
-            fontWeight: 900,
-            color: brand.ink,
-          }}
-        >
-          IA que
-          <br />
-          <span style={{ color: brand.primary }}>responde</span>
-          <br />
-          sobre tu
-          <br />
-          <span style={{ color: brand.primary }}>operación</span>
-        </div>
-        <div
-          style={{
-            width: 66,
-            height: 6,
-            borderRadius: 999,
-            marginTop: 24,
-            background: brand.primary,
-          }}
-        />
-        <div
-          style={{
-            marginTop: 34,
-            fontSize: 24,
-            lineHeight: 1.22,
-            fontWeight: 500,
-            color: "#163C86",
-          }}
-        >
-          Consulta producción, funcionalidades y
-          <br />
-          estados del sistema en segundos.
-        </div>
-      </div>
-
-      <div
-        style={{
-          position: "absolute",
-          left: 640,
-          top: 250,
-          width: 600,
-          height: 216,
-          borderRadius: "50%",
-          border: "2px solid rgba(83,165,255,0.58)",
-          opacity: orbitOpacity,
-          filter: "blur(0.2px)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 626,
-          top: 558,
-          width: 674,
-          height: 234,
-          borderRadius: "50%",
-          border: "2px solid rgba(83,165,255,0.5)",
-          opacity: orbitOpacity * 0.92,
-          filter: "blur(0.2px)",
-        }}
-      />
-      {[
-        { x: 1270, y: 100, size: 8 },
-        { x: 1130, y: 142, size: 6 },
-        { x: 1296, y: 618, size: 8 },
-        { x: 1088, y: 744, size: 7 },
-        { x: 650, y: 590, size: 9 },
-        { x: 598, y: 786, size: 6 },
-      ].map((dot, index) => (
-        <div
-          key={index}
           style={{
             position: "absolute",
-            left: dot.x,
-            top: dot.y,
-            width: dot.size,
-            height: dot.size,
+            left: isWide ? 10 : 88,
+            top: 150,
+            width: isWide ? 500 : 470,
+          }}
+        >
+          <div
+            style={{
+              fontSize: 58,
+              lineHeight: 0.94,
+              fontWeight: 900,
+              color: brand.ink,
+            }}
+          >
+            IA que
+            <br />
+            <span style={{ color: brand.primary }}>responde</span>
+            <br />
+            sobre tu
+            <br />
+            <span style={{ color: brand.primary }}>operación</span>
+          </div>
+          <div
+            style={{
+              width: 66,
+              height: 6,
+              borderRadius: 999,
+              marginTop: 24,
+              background: brand.primary,
+            }}
+          />
+          <div
+            style={{
+              marginTop: 34,
+              fontSize: 24,
+              lineHeight: 1.22,
+              fontWeight: 500,
+              color: "#163C86",
+            }}
+          >
+            Consulta producción, funcionalidades y
+            <br />
+            estados del sistema en segundos.
+          </div>
+        </div>
+
+        <div
+          style={{
+            position: "absolute",
+            left: isWide ? 735 : 640,
+            top: 250,
+            width: 600,
+            height: 216,
             borderRadius: "50%",
-            background: "rgba(255,255,255,0.92)",
-            boxShadow: "0 0 18px rgba(115,168,255,0.95)",
+            border: "2px solid rgba(83,165,255,0.58)",
             opacity: orbitOpacity,
+            filter: "blur(0.2px)",
           }}
         />
-      ))}
+        <div
+          style={{
+            position: "absolute",
+            left: isWide ? 720 : 626,
+            top: 558,
+            width: 674,
+            height: 234,
+            borderRadius: "50%",
+            border: "2px solid rgba(83,165,255,0.5)",
+            opacity: orbitOpacity * 0.92,
+            filter: "blur(0.2px)",
+          }}
+        />
+        {[
+          { x: isWide ? 1365 : 1270, y: 100, size: 8 },
+          { x: isWide ? 1225 : 1130, y: 142, size: 6 },
+          { x: isWide ? 1391 : 1296, y: 618, size: 8 },
+          { x: isWide ? 1183 : 1088, y: 744, size: 7 },
+          { x: isWide ? 745 : 650, y: 590, size: 9 },
+          { x: isWide ? 693 : 598, y: 786, size: 6 },
+        ].map((dot, index) => (
+          <div
+            key={index}
+            style={{
+              position: "absolute",
+              left: dot.x,
+              top: dot.y,
+              width: dot.size,
+              height: dot.size,
+              borderRadius: "50%",
+              background: "rgba(255,255,255,0.92)",
+              boxShadow: "0 0 18px rgba(115,168,255,0.95)",
+              opacity: orbitOpacity,
+            }}
+          />
+        ))}
 
-      {aiOperationCards.map((card) => (
-        <AIHelperCard key={card.src} card={card} />
-      ))}
+        {aiOperationCards.map((card) => (
+          <AIHelperCard
+            key={card.src}
+            card={{
+              ...card,
+              x: isWide ? card.x + 95 : card.x,
+            }}
+          />
+        ))}
+      </SceneViewport>
     </SoftBackground>
   );
 };

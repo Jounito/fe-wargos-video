@@ -1,7 +1,8 @@
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ecosystemCards } from "../../video-data";
-import { SceneText, SoftBackground } from "../../video-primitives";
+import { SceneText, SceneViewport, SoftBackground } from "../../video-primitives";
 import { clamp, easeOut } from "../../video-theme";
+import type { VariantSceneProps } from "../../video-variants";
 
 const EcosystemGalleryCard = ({
   card,
@@ -125,17 +126,30 @@ const EcosystemGallery = () => {
   );
 };
 
-export const EcosystemMosaic = () => (
-  <SoftBackground>
-    <SceneText
-      x={60}
-      y={80}
-      width={340}
-      title="Conecta, controla y optimiza desde"
-      blue="un solo sistema"
-      subtitle="Gestiona toda tu operación con una plataforma integrada y fácil de usar."
-      size={42}
-    />
-    <EcosystemGallery />
-  </SoftBackground>
-);
+export const EcosystemMosaic = ({ variant }: VariantSceneProps) => {
+  const isWide = variant === "wide";
+
+  return (
+    <SoftBackground>
+      <SceneViewport variant={variant}>
+        <div
+          style={{
+            transform: isWide ? "translateX(110px)" : undefined,
+            transformOrigin: "center center",
+          }}
+        >
+          <EcosystemGallery />
+        </div>
+        <SceneText
+          x={isWide ? -4 : 60}
+          y={isWide ? 120 : 80}
+          width={isWide ? 380 : 340}
+          title="Conecta, controla y optimiza desde"
+          blue="un solo sistema"
+          subtitle="Gestiona toda tu operacion con una plataforma integrada y facil de usar."
+          size={42}
+        />
+      </SceneViewport>
+    </SoftBackground>
+  );
+};

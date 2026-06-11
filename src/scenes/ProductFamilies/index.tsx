@@ -1,7 +1,8 @@
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { productFamilyCards } from "../../video-data";
-import { SoftBackground } from "../../video-primitives";
+import { SceneViewport, SoftBackground } from "../../video-primitives";
 import { brand, clamp } from "../../video-theme";
+import type { VariantSceneProps } from "../../video-variants";
 
 const ProductFamilyCard = ({
   card,
@@ -43,7 +44,7 @@ const ProductFamilyCard = ({
   );
 };
 
-export const ProductFamilies = () => {
+export const ProductFamilies = ({ variant }: VariantSceneProps) => {
   const frame = useCurrentFrame();
   const glow = interpolate(frame, [10, 44], [0, 1], clamp);
   const { fps } = useVideoConfig();
@@ -55,54 +56,56 @@ export const ProductFamilies = () => {
 
   return (
     <SoftBackground>
-      <div
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 78,
-          textAlign: "center",
-          opacity: intro,
-          transform: `translateY(${(1 - intro) * 22}px)`,
-        }}
-      >
+      <SceneViewport variant={variant}>
         <div
           style={{
-            fontSize: 36,
-            lineHeight: 1.08,
-            fontWeight: 900,
-            color: brand.ink,
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 78,
+            textAlign: "center",
+            opacity: intro,
+            transform: `translateY(${(1 - intro) * 22}px)`,
           }}
         >
-          Gestión completa para <span style={{ color: brand.primary }}>cada área</span> de tu casino.
+          <div
+            style={{
+              fontSize: 36,
+              lineHeight: 1.08,
+              fontWeight: 900,
+              color: brand.ink,
+            }}
+          >
+            Gestión completa para <span style={{ color: brand.primary }}>cada área</span> de tu casino.
+          </div>
+          <div
+            style={{
+              width: 40,
+              height: 4,
+              borderRadius: 999,
+              margin: "18px auto 0",
+              background: brand.primary,
+            }}
+          />
         </div>
         <div
           style={{
-            width: 40,
-            height: 4,
-            borderRadius: 999,
-            margin: "18px auto 0",
-            background: brand.primary,
+            position: "absolute",
+            left: 90,
+            right: 90,
+            bottom: 28,
+            height: 82,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(ellipse at center, rgba(33,110,238,0.2), rgba(115,168,255,0.08) 42%, transparent 76%)",
+            filter: "blur(12px)",
+            opacity: glow,
           }}
         />
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          left: 90,
-          right: 90,
-          bottom: 28,
-          height: 82,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(ellipse at center, rgba(33,110,238,0.2), rgba(115,168,255,0.08) 42%, transparent 76%)",
-          filter: "blur(12px)",
-          opacity: glow,
-        }}
-      />
-      {productFamilyCards.map((card) => (
-        <ProductFamilyCard key={card.src} card={card} />
-      ))}
+        {productFamilyCards.map((card) => (
+          <ProductFamilyCard key={card.src} card={card} />
+        ))}
+      </SceneViewport>
     </SoftBackground>
   );
 };

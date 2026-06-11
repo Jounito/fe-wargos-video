@@ -1,6 +1,12 @@
 import { Img, interpolate, staticFile, useCurrentFrame } from "remotion";
-import { FloatingImageMockup, SceneText, SoftBackground } from "../../video-primitives";
+import {
+  FloatingImageMockup,
+  SceneText,
+  SceneViewport,
+  SoftBackground,
+} from "../../video-primitives";
 import { clamp } from "../../video-theme";
+import type { VariantSceneProps } from "../../video-variants";
 
 const ProductConnectionLines = () => {
   const frame = useCurrentFrame();
@@ -47,47 +53,57 @@ const ProductConnectionLines = () => {
   );
 };
 
-export const ProductPresentation = () => (
+export const ProductPresentation = ({ variant }: VariantSceneProps) => (
   <SoftBackground>
-    <SceneText
-      x={90}
-      y={136}
-      width={480}
-      title="CRM para"
-      blue="casinos y tragamonedas"
-      subtitle="Una plataforma completa para gestionar toda tu operación."
-      size={50}
-    />
-    <ProductConnectionLines />
-    <FloatingImageMockup
-      src="escena02/scene02-card-vip.png"
-      x={650}
-      y={24}
-      width={407}
-      delay={18}
-      lift={2}
-    />
-    <FloatingImageMockup
-      src="escena02/scene02-card-promo.png"
-      x={615}
-      y={244}
-      width={428}
-      delay={26}
-    />
-    <FloatingImageMockup
-      src="escena02/scene02-card-points.png"
-      x={957}
-      y={144}
-      width={351}
-      delay={30}
-      lift={6}
-    />
-    <FloatingImageMockup
-      src="escena02/scene02-card-ranking.png"
-      x={830}
-      y={356}
-      width={500}
-      delay={34}
-    />
+    <SceneViewport variant={variant}>
+      {(() => {
+        const isWide = variant === "wide";
+
+        return (
+          <>
+      <SceneText
+        x={isWide ? 20 : 90}
+        y={136}
+        width={isWide ? 450 : 480}
+        title="CRM para"
+        blue="casinos y tragamonedas"
+        subtitle="Una plataforma completa para gestionar toda tu operacion."
+        size={50}
+      />
+      <ProductConnectionLines />
+      <FloatingImageMockup
+        src="escena02/scene02-card-vip.png"
+        x={isWide ? 770 : 650}
+        y={24}
+        width={407}
+        delay={18}
+        lift={2}
+      />
+      <FloatingImageMockup
+        src="escena02/scene02-card-promo.png"
+        x={isWide ? 735 : 615}
+        y={244}
+        width={428}
+        delay={26}
+      />
+      <FloatingImageMockup
+        src="escena02/scene02-card-points.png"
+        x={isWide ? 1080 : 957}
+        y={144}
+        width={351}
+        delay={30}
+        lift={6}
+      />
+      <FloatingImageMockup
+        src="escena02/scene02-card-ranking.png"
+        x={isWide ? 948 : 830}
+        y={356}
+        width={500}
+        delay={34}
+      />
+          </>
+        );
+      })()}
+    </SceneViewport>
   </SoftBackground>
 );

@@ -9,6 +9,11 @@ import {
   useVideoConfig,
 } from "remotion";
 import { brand, clamp, easeOut } from "./video-theme";
+import {
+  BASE_CANVAS,
+  getVariantStageScale,
+  type CompositionVariant,
+} from "./video-variants";
 
 export const SoftBackground = ({ children }: { children: ReactNode }) => {
   const frame = useCurrentFrame();
@@ -220,6 +225,32 @@ export const FloatingImageMockup = ({
           display: "block",
         }}
       />
+    </div>
+  );
+};
+
+export const SceneViewport = ({
+  children,
+  variant,
+}: {
+  children: ReactNode;
+  variant: CompositionVariant;
+}) => {
+  const scale = getVariantStageScale(variant);
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        width: BASE_CANVAS.width,
+        height: BASE_CANVAS.height,
+        transform: `translate(-50%, -50%) scale(${scale})`,
+        transformOrigin: "center center",
+      }}
+    >
+      {children}
     </div>
   );
 };

@@ -9,11 +9,12 @@ import {
   useVideoConfig,
 } from "remotion";
 import { clamp, easeOut } from "../../video-theme";
+import { getVariantStageScale, type VariantSceneProps } from "../../video-variants";
 
-export const SceneZero = () => {
+export const SceneZero = ({ variant }: VariantSceneProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const scale = 2.1;
+  const scale = 2.1 * getVariantStageScale(variant);
   const logoWidth = 291 * scale;
   const logoHeight = 91 * scale;
   const isotypeWidth = 90 * scale;

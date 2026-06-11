@@ -1,5 +1,6 @@
 import { Img, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
-import { SceneText, SoftBackground } from "../../video-primitives";
+import { SceneText, SceneViewport, SoftBackground } from "../../video-primitives";
+import type { VariantSceneProps } from "../../video-variants";
 
 const DashboardMock = () => {
   const frame = useCurrentFrame();
@@ -19,7 +20,7 @@ const DashboardMock = () => {
         y={65}
         title="Información en"
         width={340}
-        blue="tiempo real"
+        blue="Tiempo real"
         blueInline
         afterBlue="para decisiones más inteligentes."
         subtitle="Visualiza actividad, alertas y rendimiento al instante."
@@ -65,8 +66,10 @@ const DashboardMock = () => {
   );
 };
 
-export const DashboardHero = () => (
+export const DashboardHero = ({ variant }: VariantSceneProps) => (
   <SoftBackground>
-    <DashboardMock />
+    <SceneViewport variant={variant}>
+      <DashboardMock />
+    </SceneViewport>
   </SoftBackground>
 );

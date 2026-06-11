@@ -1,7 +1,8 @@
 import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { operationsCards } from "../../video-data";
-import { SceneText, SoftBackground } from "../../video-primitives";
+import { SceneText, SceneViewport, SoftBackground } from "../../video-primitives";
 import { clamp } from "../../video-theme";
+import type { VariantSceneProps } from "../../video-variants";
 
 const OperationsControlCard = ({
   card,
@@ -42,51 +43,53 @@ const OperationsControlCard = ({
   );
 };
 
-export const OperationsControl = () => {
+export const OperationsControl = ({ variant }: VariantSceneProps) => {
   const frame = useCurrentFrame();
   const glow = interpolate(frame, [12, 46], [0, 1], clamp);
 
   return (
     <SoftBackground>
-      <SceneText
-        center
-        y={68}
-        title="Control total de tu"
-        blue="operación."
-        blueInline
-        size={38}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 88,
-          right: 88,
-          bottom: 26,
-          height: 84,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(ellipse at center, rgba(33,110,238,0.22), rgba(115,168,255,0.08) 42%, transparent 76%)",
-          filter: "blur(12px)",
-          opacity: glow,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: 126,
-          right: 126,
-          bottom: 88,
-          height: 36,
-          borderRadius: "50%",
-          background:
-            "linear-gradient(90deg, transparent, rgba(33,110,238,0.16), transparent)",
-          filter: "blur(8px)",
-          opacity: glow * 0.82,
-        }}
-      />
-      {operationsCards.map((card) => (
-        <OperationsControlCard key={card.src} card={card} />
-      ))}
+      <SceneViewport variant={variant}>
+        <SceneText
+          center
+          y={68}
+          title="Control total de tu"
+          blue="operación."
+          blueInline
+          size={38}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 88,
+            right: 88,
+            bottom: 26,
+            height: 84,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(ellipse at center, rgba(33,110,238,0.22), rgba(115,168,255,0.08) 42%, transparent 76%)",
+            filter: "blur(12px)",
+            opacity: glow,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 126,
+            right: 126,
+            bottom: 88,
+            height: 36,
+            borderRadius: "50%",
+            background:
+              "linear-gradient(90deg, transparent, rgba(33,110,238,0.16), transparent)",
+            filter: "blur(8px)",
+            opacity: glow * 0.82,
+          }}
+        />
+        {operationsCards.map((card) => (
+          <OperationsControlCard key={card.src} card={card} />
+        ))}
+      </SceneViewport>
     </SoftBackground>
   );
 };
