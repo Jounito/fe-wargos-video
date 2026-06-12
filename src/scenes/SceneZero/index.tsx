@@ -42,23 +42,23 @@ export const SceneZero = ({ variant }: VariantSceneProps) => {
   const intro = spring({
     frame,
     fps,
-    config: { damping: 16, stiffness: 120, mass: 0.9 },
+    config: { damping: 15, stiffness: 165, mass: 0.82 },
   });
 
-  const fadeIn = interpolate(frame, [0, 8], [0, 1], clamp);
-  const fadeOut = interpolate(frame, [78, 90], [1, 0], clamp);
+  const fadeIn = interpolate(frame, [0, 5], [0, 1], clamp);
+  const fadeOut = interpolate(frame, [62, 90], [1, 0], clamp);
   const fade = fadeIn * fadeOut;
 
-  const glowScale = interpolate(frame, [0, fps * 2.5], [0.86, 1.06], clamp);
+  const glowScale = interpolate(frame, [0, fps * 3], [0.86, 1.06], clamp);
   const shineX = interpolate(frame, [0, fps * 3], [-35, 105], {
     ...clamp,
     easing: easeOut,
   });
 
   const logoSettle = spring({
-    frame: Math.max(0, frame - 12),
+    frame: Math.max(0, frame - 8),
     fps,
-    config: { damping: 18, stiffness: 120, mass: 0.95 },
+    config: { damping: 18, stiffness: 150, mass: 0.9 },
   });
 
   const isotypeScale = interpolate(intro, [0, 1], [9, 1], clamp);
@@ -66,12 +66,12 @@ export const SceneZero = ({ variant }: VariantSceneProps) => {
     ...clamp,
     easing: easeOut,
   });
-  const wordmarkProgress = interpolate(frame, [14, 34], [0, 1], {
+  const wordmarkProgress = interpolate(frame, [8, 24], [0, 1], {
     ...clamp,
     easing: easeOut,
   });
-  const technologiesOpacity = interpolate(frame, [34, 44], [0, 1], clamp);
-  const finalLogoOpacity = interpolate(frame, [40, 48], [0, 1], clamp);
+  const technologiesOpacity = interpolate(frame, [24, 34], [0, 1], clamp);
+  const finalLogoOpacity = interpolate(frame, [30, 38], [0, 1], clamp);
 
   return (
     <AbsoluteFill

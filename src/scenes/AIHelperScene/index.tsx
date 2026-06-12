@@ -1,7 +1,20 @@
-import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  Img,
+  interpolate,
+  spring,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { aiOperationCards } from "../../video-data";
-import { SceneViewport, SoftBackground } from "../../video-primitives";
-import { brand, clamp } from "../../video-theme";
+import {
+  SceneCornerLogo,
+  SceneCornerWebsite,
+  SceneText,
+  SceneViewport,
+  SoftBackground,
+} from "../../video-primitives";
+import { clamp } from "../../video-theme";
 import type { VariantSceneProps } from "../../video-variants";
 
 const AIHelperCard = ({
@@ -61,51 +74,21 @@ export const AIHelperScene = ({ variant }: VariantSceneProps) => {
   return (
     <SoftBackground>
       <SceneViewport variant={variant}>
-        <div
-          style={{
-            position: "absolute",
-            left: isWide ? 10 : 88,
-            top: 150,
-            width: isWide ? 500 : 470,
-          }}
-        >
-          <div
-            style={{
-              fontSize: 52,
-              lineHeight: 0.94,
-              fontWeight: 900,
-              color: brand.ink,
-            }}
-          >
-            Respuestas
-            <br />
-            <span style={{ color: brand.primary }}>al instante</span>
-            <br />
-            para una operación
-            <br />
-            <span style={{ color: brand.primary }}>que nunca para.</span>
-          </div>
-          <div
-            style={{
-              width: 66,
-              height: 6,
-              borderRadius: 999,
-              marginTop: 24,
-              background: brand.primary,
-            }}
-          />
-          <div
-            style={{
-              marginTop: 34,
-              fontSize: 32,
-              lineHeight: 1.22,
-              fontWeight: 500,
-              color: "#163C86",
-            }}
-          >
-            Soporte cuando tu sala lo requiera.
-          </div>
-        </div>
+        <SceneCornerLogo variant={variant} />
+        <SceneCornerWebsite variant={variant} />
+        <SceneText
+          x={isWide ? -60 : 88}
+          middle
+          width={isWide ? 580 : 500}
+          title={
+            <>
+              <span style={{ color: "#216EEE" }}>Respuestas inmediatas</span>
+              <span> para una operación</span>
+              <br />
+              <span>que nunca para.</span>
+            </>
+          }
+        />
 
         <div
           style={{

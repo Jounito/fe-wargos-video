@@ -72,6 +72,7 @@ type SceneTextProps = {
   width?: number;
   size?: number;
   center?: boolean;
+  middle?: boolean;
 };
 
 export const SceneText = ({
@@ -80,12 +81,12 @@ export const SceneText = ({
   blue,
   blueInline = false,
   afterBlue,
-  subtitle,
   x,
   y,
   width,
-  size = 58,
+  size = 64,
   center = false,
+  middle = false,
 }: SceneTextProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -101,11 +102,13 @@ export const SceneText = ({
         position: "absolute",
         left: center ? 0 : x,
         right: center ? 0 : undefined,
-        top: y,
+        top: middle ? "47%" : y,
         width: center ? undefined : width,
         textAlign: center ? "center" : "left",
         opacity: intro,
-        transform: `translateY(${(1 - intro) * 22}px)`,
+        transform: middle
+          ? `translateY(calc(-50% + ${(1 - intro) * 22}px))`
+          : `translateY(${(1 - intro) * 22}px)`,
       }}
     >
       {eyebrow ? (
@@ -155,6 +158,7 @@ export const SceneText = ({
           background: brand.primary,
         }}
       />
+      {/*
       {subtitle ? (
         <div
           style={{
@@ -168,6 +172,7 @@ export const SceneText = ({
           {subtitle}
         </div>
       ) : null}
+      */}
     </div>
   );
 };
@@ -251,6 +256,73 @@ export const SceneViewport = ({
       }}
     >
       {children}
+    </div>
+  );
+};
+
+export const SceneCornerLogo = ({
+  variant,
+}: {
+  variant: CompositionVariant;
+}) => {
+  const isWide = variant === "wide";
+
+  return (
+    <Img
+      src={staticFile("logo-light-theme.svg")}
+      style={{
+        position: "absolute",
+        top: 64,
+        left: isWide ? -60 : 40,
+        width: isWide ? 208 : 184,
+        height: "auto",
+        opacity: 0.98,
+        filter: "drop-shadow(0 10px 20px rgba(18, 70, 170, 0.16))",
+      }}
+    />
+  );
+};
+
+export const SceneCornerWebsite = ({
+  variant,
+}: {
+  variant: CompositionVariant;
+}) => {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        left: -60,
+        bottom: 36,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Img
+        src={staticFile("qr_wgt_pe.svg")}
+        style={{
+          width: 110,
+          height: 110,
+          filter: "drop-shadow(0 8px 18px rgba(18, 70, 170, 0.12))",
+        }}
+      />
+      <div
+        style={{
+          fontSize: 16,
+          lineHeight: 1,
+          fontWeight: 800,
+          letterSpacing: 0.2,
+          color: "#0e3067",
+          whiteSpace: "nowrap",
+          background: "rgba(255, 255, 255, 0.92)",
+          padding: "6px 12px",
+          borderRadius: 16,
+          filter: "drop-shadow(0 4px 12px rgba(18, 70, 170, 0.12))",
+        }}
+      >
+        wgt.pe
+      </div>
     </div>
   );
 };

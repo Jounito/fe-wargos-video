@@ -1,6 +1,19 @@
-import { Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  Img,
+  interpolate,
+  spring,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { ecosystemCards } from "../../video-data";
-import { SceneText, SceneViewport, SoftBackground } from "../../video-primitives";
+import {
+  SceneCornerLogo,
+  SceneCornerWebsite,
+  SceneText,
+  SceneViewport,
+  SoftBackground,
+} from "../../video-primitives";
 import { clamp, easeOut } from "../../video-theme";
 import type { VariantSceneProps } from "../../video-variants";
 
@@ -132,6 +145,8 @@ export const EcosystemMosaic = ({ variant }: VariantSceneProps) => {
   return (
     <SoftBackground>
       <SceneViewport variant={variant}>
+        <SceneCornerLogo variant={variant} />
+        <SceneCornerWebsite variant={variant} />
         <div
           style={{
             transform: isWide ? "translateX(110px)" : undefined,
@@ -141,13 +156,17 @@ export const EcosystemMosaic = ({ variant }: VariantSceneProps) => {
           <EcosystemGallery />
         </div>
         <SceneText
-          x={isWide ? -20 : 60}
-          y={isWide ? 120 : 80}
-          width={isWide ? 480 : 340}
-          title="Un ecosistema completo para gestionar"
-          blue="tu casino."
-          subtitle="Gestión, control y seguimiento desde un solo lugar."
-          size={42}
+          x={isWide ? -60 : 60}
+          middle
+          width={isWide ? 500 : 340}
+          title={
+            <>
+              <span style={{ color: "#216EEE" }}>Desarrollo e innovación</span> que se adapta a
+              <br />
+              tu empresa.
+            </>
+          }
+          // subtitle="Gestion, control y seguimiento desde un solo lugar."
         />
       </SceneViewport>
     </SoftBackground>

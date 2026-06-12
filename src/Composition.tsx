@@ -1,10 +1,8 @@
 import { AbsoluteFill, Sequence } from "remotion";
 import {
   AIHelperScene,
-  DashboardHero,
   EcosystemMosaic,
   OperationsControl,
-  OutroScene,
   ProductFamilies,
   ProductPresentation,
   SceneZero,
@@ -20,31 +18,35 @@ export const MyComposition = ({ variant }: VariantSceneProps) => {
       <Sequence durationInFrames={90}>
         <SceneZero variant={variant} />
       </Sequence>
-      <Sequence from={90} durationInFrames={90}>
+      <Sequence from={90} durationInFrames={120}>
         <ProductPresentation variant={variant} />
       </Sequence>
-      <Sequence from={180} durationInFrames={120}>
+      <Sequence from={210} durationInFrames={210}>
         <EcosystemMosaic variant={variant} />
       </Sequence>
-      <Sequence from={300} durationInFrames={90}>
+      {/*
+      <Sequence from={420} durationInFrames={180}>
         <DashboardHero variant={variant} />
       </Sequence>
+      */}
       {/*
-      <Sequence from={390} durationInFrames={120}>
+      <Sequence from={420} durationInFrames={180}>
         <OperationsControl variant={variant} />
       </Sequence>
       */}
       {/*
-      <Sequence from={390} durationInFrames={120}>
+      <Sequence from={420} durationInFrames={180}>
         <ProductFamilies variant={variant} />
       </Sequence>
       */}
-      <Sequence from={390} durationInFrames={120}>
+      <Sequence from={420} durationInFrames={180}>
         <AIHelperScene variant={variant} />
       </Sequence>
+      {/*
       <Sequence from={510} durationInFrames={90}>
         <OutroScene variant={variant} />
       </Sequence>
+      */}
     </AbsoluteFill>
   );
 };
