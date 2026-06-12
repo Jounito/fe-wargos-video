@@ -141,12 +141,12 @@ export const EcosystemMosaic = ({ variant }: VariantSceneProps) => {
           <EcosystemGallery />
         </div>
         <SceneText
-          x={isWide ? -4 : 60}
+          x={isWide ? -20 : 60}
           y={isWide ? 120 : 80}
-          width={isWide ? 380 : 340}
-          title="Conecta, controla y optimiza desde"
-          blue="un solo sistema"
-          subtitle="Gestiona toda tu operacion con una plataforma integrada y facil de usar."
+          width={isWide ? 480 : 340}
+          title="Un ecosistema completo para gestionar"
+          blue="tu casino."
+          subtitle="Gestión, control y seguimiento desde un solo lugar."
           size={42}
         />
       </SceneViewport>

@@ -65,7 +65,7 @@ export const ProductPresentation = ({ variant }: VariantSceneProps) => (
         x={isWide ? 20 : 90}
         y={136}
         width={isWide ? 450 : 480}
-        title="CRM para"
+        title="Software de gestión para"
         blue="casinos y tragamonedas"
         subtitle="Una plataforma completa para gestionar toda tu operacion."
         size={50}

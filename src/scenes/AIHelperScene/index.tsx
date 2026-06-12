@@ -71,19 +71,19 @@ export const AIHelperScene = ({ variant }: VariantSceneProps) => {
         >
           <div
             style={{
-              fontSize: 58,
+              fontSize: 52,
               lineHeight: 0.94,
               fontWeight: 900,
               color: brand.ink,
             }}
           >
-            IA que
+            Respuestas
             <br />
-            <span style={{ color: brand.primary }}>responde</span>
+            <span style={{ color: brand.primary }}>al instante</span>
             <br />
-            sobre tu
+            para una operación
             <br />
-            <span style={{ color: brand.primary }}>operación</span>
+            <span style={{ color: brand.primary }}>que nunca para.</span>
           </div>
           <div
             style={{
@@ -97,15 +97,13 @@ export const AIHelperScene = ({ variant }: VariantSceneProps) => {
           <div
             style={{
               marginTop: 34,
-              fontSize: 24,
+              fontSize: 32,
               lineHeight: 1.22,
               fontWeight: 500,
               color: "#163C86",
             }}
           >
-            Consulta producción, funcionalidades y
-            <br />
-            estados del sistema en segundos.
+            Soporte cuando tu sala lo requiera.
           </div>
         </div>
 

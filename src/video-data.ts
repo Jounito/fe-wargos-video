@@ -28,8 +28,8 @@ export const productFamilyCards = [
 ] as const;
 
 export const aiOperationCards = [
-  { src: "escena07/escena-08-05.png", x: 592, y: 100, width: 230, delay: 22 },
-  { src: "escena07/escena-08-06.png", x: 550, y: 370, width: 230, delay: 30 },
-  { src: "escena07/escena-08-07.png", x: 1000, y: 340, width: 274, delay: 38 },
-  { src: "escena07/escena-08-08.png", x: 720, y: 150, width: 408, delay: 14 },
+  { src: "escena07/escena-08-05.png", x: 522, y: 80, width: 250, delay: 22 },
+  { src: "escena07/escena-08-06.png", x: 480, y: 350, width: 250, delay: 30 },
+  { src: "escena07/escena-08-07.png", x: 1080, y: 320, width: 310, delay: 38 },
+  { src: "escena07/escena-08-08.png", x: 660, y: 10, width: 580, delay: 14 },
 ] as const;
